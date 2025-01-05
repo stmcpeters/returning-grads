@@ -2,6 +2,8 @@
 import csv 
 # import built-in statistics module to do calculations
 import statistics
+# import nan from math module
+from math import nan
 
 # initialize empty lists to hold subject scores
 math_scores = []
@@ -20,19 +22,19 @@ def subject_average(filename):
 
     for row in data:
       # append the scores to the respective lists
-      # try/except block for error handling; if a value cannot be converted to an integer, it will be set to 0
+      # try/except block for error handling; if a value cannot be converted to an integer, it will be set to NaN to represent missing/invalid data
       try:
-        math_scores.append(int(row[1]))
+        math_scores.append(nan)
       except ValueError:
-        math_scores.append(0)
+        math_scores.append(float(nan))
       try:
         science_scores.append(int(row[2]))
       except ValueError:
-        science_scores.append(0)
+        science_scores.append(float(nan))
       try:
         english_scores.append(int(row[3]))
       except ValueError:
-        english_scores.append(0)
+        english_scores.append(float(nan))
 
     # calculate the average scores for each subject
     print('Average math grade is: {}'.format(statistics.mean(math_scores))) # returns 84
