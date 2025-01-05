@@ -24,7 +24,7 @@ def subject_average(filename):
       # append the scores to the respective lists
       # try/except block for error handling; if a value cannot be converted to an integer, it will be set to NaN to represent missing/invalid data
       try:
-        math_scores.append(nan)
+        math_scores.append(int(row[1]))
       except ValueError:
         math_scores.append(float(nan))
       try:
@@ -38,7 +38,7 @@ def subject_average(filename):
 
     # calculate the average scores for each subject
     print('Average math grade is: {}'.format(statistics.mean(math_scores))) # returns 84
-    print(f"Average science grade is: {statistics.mean(science_scores)}") # returns 0 bc of invalid data
+    print(f"Average science grade is: {statistics.mean(science_scores)}") # returns NaN bc of invalid data
     print(f"Average english grade is: {statistics.mean(english_scores)}") # returns 91.2 
 
 # call the function with the file name
@@ -59,9 +59,9 @@ def highest_overall_grade(filename):
         try:
           # converts each grade to an integer and calulates the average using statistics module
           student_grades[row[0]] = statistics.mean((int(row[1])) + (int(row[2])) + (int(row[3])))
-          # if any error occurs, the average is set to 0
+          # if any error occurs, the average is set to NaN
         except ValueError:
-          student_grades[row[0]] = 0
+          student_grades[row[0]] = float(nan)
 
       # find the student with the highest average grade
       # max function will return the key with the highest value
