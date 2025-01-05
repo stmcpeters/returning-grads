@@ -45,7 +45,31 @@ def subject_average(filename):
 subject_average('grades.csv')
 
 # Find the student(s) with the highest overall grade (average of all three subjects).
+def highest_overall_grade(filename):
+    with open(filename, 'r') as students:
+      data = csv.reader(students)
+      heading = next(data)
 
+# initialize an empty dictionary to store student names and their average grades
+      student_grades = {}
+      # iterate over the data
+
+      for row in data:
+          # calculate the average grade for each student
+        try:
+          # converts each grade to an integer and calulates the average using statistics module
+          student_grades[row[0]] = statistics.mean((int(row[1])) + (int(row[2])) + (int(row[3])))
+          # if any error occurs, the average is set to 0
+        except ValueError:
+          student_grades[row[0]] = 0
+
+      # find the student with the highest average grade
+      # max function will return the key with the highest value
+      highest_grade = max(student_grades, key=student_grades.get) 
+      print(f"The student with the highest overall grade is: {highest_grade}")
+
+# call the function with the file name
+highest_overall_grade('grades.csv')
 
 # Determine which subject has the highest average grade overall.
 
