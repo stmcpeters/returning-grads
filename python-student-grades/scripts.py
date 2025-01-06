@@ -66,7 +66,8 @@ def highest_overall_grade(filename):
       for row in data:
         try:
           # converts each grade to an integer and calulates the average using statistics module
-          student_grades[row[0]] = statistics.mean((int(row[1])) + (int(row[2])) + (int(row[3])))
+          grades = [int(row[1]), int(row[2]), int(row[3])]
+          student_grades[row[0]] = statistics.mean(grades)
           # if any error occurs, the average is set to NaN
         except ValueError:
           student_grades[row[0]] = math.nan
