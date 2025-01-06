@@ -94,31 +94,31 @@ def highest_average_subject(filename):
       heading = next(data)
 
       # initialize empty lists to hold average scores for each subject
-      math_average = []
-      science_average = []
-      english_average = []
+      math_averages = []
+      science_averages = []
+      english_averages = []
 
       # iterate over data to calculate the average grade for each subject
       for row in data:
         try:
-          math_average.append(int(row[1]))
+          math_averages.append(int(row[1]))
         except ValueError:
-          math_average.append(math.nan)
+          math_averages.append(math.nan)
         
         try:
-          science_average.append(int(row[2]))
+          science_averages.append(int(row[2]))
         except ValueError:
-          science_average.append(math.nan)
+          science_averages.append(math.nan)
         
         try:
-          english_average.append(int(row[3]))
+          english_averages.append(int(row[3]))
         except ValueError: 
-          english_average.append(math.nan)
+          english_averages.append(math.nan)
       
       # calculate the average grade for each subject
-      math_avg = statistics.mean(math_average)
-      science_avg = statistics.mean(science_average)
-      english_avg = statistics.mean(english_average)
+      math_avg = statistics.mean(math_averages)
+      science_avg = statistics.mean(science_averages)
+      english_avg = statistics.mean(english_averages)
 
       # find the subject with the highest average grade
       # max function will return the key with the highest value
