@@ -8,7 +8,7 @@ app = Flask(__name__)
 feedback_data = []
 
 # route decorator to tell Flask what URL should trigger the function
-@app.route('/api/feedback', methods=['POST'])
+@app.route('/', methods=['POST'])
 # function to post the feedback data to the web service
 def generate_feedback():
   # get the JSON data from the request
@@ -25,7 +25,7 @@ def generate_feedback():
   return 'Feedback received successfully', 200
 
 # function and route to see data in the browser
-@app.route('/api/feedback', methods=['GET'])
+@app.route('/', methods=['GET'])
 def display_feedback():
   # return the feedback data in JSON format
   return jsonify(feedback_data), 200

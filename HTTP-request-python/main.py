@@ -8,7 +8,7 @@ import json
 # function to upload data to the web service
 def upload_to_web_service(data):
     # Send POST request to the web service
-    response = requests.post('http://127.0.0.1:8008/api/feedback', data=data, headers={'Content-Type': 'application/json'})
+    response = requests.post('http://127.0.0.1:8008/', data=data, headers={'Content-Type': 'application/json'})
     print(response.status_code, response.text)
     pass
 
