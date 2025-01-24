@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Check 2</title>
+  <style>
+    li {
+      padding: 20px 10px;
+      margin: 20px;
+      font-size: larger;
+    }
+  </style>
+</head>
+<body>
+  <h1>Top 20 Books scraped from <a href="https://books.toscrape.com/">Books to Scrape</a></h1>
+  <ul>
+    {% for data in data %}
+      <li>{{ data.id }} - {{ data.title }} is {{ data.availability }} and costs {{ data.price }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
