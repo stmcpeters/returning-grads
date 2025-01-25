@@ -8,22 +8,22 @@ app = Flask(__name__)
 
 def db_connection():
   # connect to database
-  conn = sqlite3.connect('bookstore.db')
+  connection = sqlite3.connect('bookstore.db')
   # allows us to access the columns of the database by name like a Python dictionary
-  conn.row_factory = sqlite3.Row
+  connection.row_factory = sqlite3.Row
   # access the database using a cursor object
-  return conn
+  return connection
 
 # use a route decorator to create a route for the homepage
 @app.route('/')
 # create a function that will return the data from the database
 def index():
   # opens the database connection
-  conn = db_connection()
+  connection = db_connection()
   # fetches all the data from the top_books table
-  data = conn.execute('''SELECT * FROM top_books''').fetchall()
+  data = connection.execute('''SELECT * FROM top_books''').fetchall()
   # closes database connection
-  conn.close()
+  connection.close()
   # returns data to the user
   return render_template('index.html', data=data)
 
