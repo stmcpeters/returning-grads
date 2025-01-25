@@ -5,16 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Knowledge Check</title>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    a {
+      text-decoration: none;
+      background-color: blue;
+      color: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: darkblue;
+    }
+    body, div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    div {
+      background-color: lightgray;
+      width: 100%;
+    }
+    .g-recaptcha {
+      padding: 0px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to my Knowledge Check 2</h1>
-  <h2>No robots allowed!</h2>
-  <p>If you're really not a robot, please complete the 2 step user verification below :]</p>
-
-  <form action="?" method="POST">
-    <div class="g-recaptcha" data-sitekey="{{ site_key }}" data-theme="dark"></div>
-  </form>
-  <br/>
-  <a href="{{ url_for('login') }}">Login with Google</a>
+  <div class="content">
+    <h1>Welcome to my Knowledge Check 2</h1>
+    <h2>No robots allowed!</h2>
+    <p>If you're really not a robot, please complete the 2 step user verification below :]</p>
+  
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="{{ site_key }}"></div>
+    </form>
+    <br/>
+    <a href="{{ url_for('login') }}">Login with Google</a>
+  </div>
 </body>
 </html>
