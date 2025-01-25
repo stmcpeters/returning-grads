@@ -32,7 +32,7 @@ for price in prices:
 
 availability = soup.find_all('p', class_='instock availability')
 for available in availability:
-  print(available.text)
+  print(available.text, '\n')
 
 # create a connection to the database, if it doesn't exist it will be created
 conn = sqlite3.connect('bookstore.db')
