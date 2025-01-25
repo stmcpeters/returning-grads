@@ -23,7 +23,9 @@
   </style>
 </head>
 <body>
-  <h1>Top 20 Books scraped from <a href="https://books.toscrape.com/">Books to Scrape</a></h1>
+  <h1>Welcome, thanks for signing in!</h1>
+  <h2>Cheers to not being a robot</h2>
+  <h3>Here's the Top 20 Books scraped from <a href="https://books.toscrape.com/">Books to Scrape</a></h3>
   <ul>
     {% for data in data %}
       <li class="data">{{ data.id }} - [{{ data.availability }}] - {{ data.title }} costs {{ data.price }}</li>
