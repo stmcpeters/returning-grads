@@ -35,12 +35,12 @@ for available in availability:
   print(available.text, '\n')
 
 # create a connection to the database, if it doesn't exist it will be created
-conn = sqlite3.connect('bookstore.db')
+connection = sqlite3.connect('bookstore.db')
 # create a cursor object to execute SQL queries
-c = conn.cursor()
+cursor = connection.cursor()
 
 #drop table if already exists - testing if table was created successfully
-c.execute('DROP TABLE IF EXISTS top_books')
+cursor.execute('DROP TABLE IF EXISTS top_books')
 
 # top_books table schema
 table = ''' CREATE TABLE top_books (
@@ -50,25 +50,25 @@ table = ''' CREATE TABLE top_books (
             availability TEXT
         ); '''
 # creates table in database
-c.execute(table)
+cursor.execute(table)
 # 'saves' table being created
-conn.commit()
+connection.commit()
 # message to make sure table is created
 print('table has been created')
 
 # iterate through data and insert it into the table
 # uses zip() to insert data all in one command which is best practice for matching data
 for title, price, available in zip(titles, prices, availability):
-  c.execute('''INSERT INTO top_books (title, price, availability) VALUES (?, ?, ?)''', (title.text, price.text, available.text))
+  cursor.execute('''INSERT INTO top_books (title, price, availability) VALUES (?, ?, ?)''', (title.text, price.text, available.text))
 # commit changes
-conn.commit()
+connection.commit()
 
 # select all data from the table
-c.execute('''SELECT * FROM top_books''')
+cursor.execute('''SELECT * FROM top_books''')
 # fetch data from the table
-result = c.fetchall()
+result = cursor.fetchall()
 # checks
 print('database data: ', result)
 
 # close the connection to the database
-conn.close()
+connection.close()
