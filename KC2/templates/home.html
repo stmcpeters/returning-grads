@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Check</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <h1>Welcome to my Knowledge Check 2</h1>
+  <h2>No robots allowed!</h2>
+  <p>If you're really not a robot, please complete the 2 step user verification below :]</p>
+
+  <form action="?" method="POST">
+    <div class="g-recaptcha" data-sitekey="{{ site_key }}" data-theme="dark"></div>
+  </form>
+  <br/>
+  <a href="{{ url_for('login') }}">Login with Google</a>
+</body>
+</html>
