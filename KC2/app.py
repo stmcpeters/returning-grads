@@ -47,7 +47,7 @@ def db_connection():
 # use a route decorator to create a route for the landing page to prompt CAPTCHA and sign in with google button
 @app.route('/')
 def landing():
-  return render_template('login.html', site_key=SITE_KEY)
+  return render_template('home.html', site_key=SITE_KEY)
 
 # use a route decorator to create a route for the page showing the data
 @app.route('/data')
