@@ -1,5 +1,7 @@
 # import Flask to create web service
-from flask import Flask, render_template, url_for, redirect, session, request
+from flask import Flask, render_template, url_for, redirect, request
+# import login-required decorator from flask_login
+from flask_login import login_required
 # import sqlite
 import sqlite3
 # import dotenv and os module to access environment variables
@@ -50,6 +52,8 @@ def landing():
   return render_template('home.html', site_key=SITE_KEY)
 
 # use a route decorator to create a route for the page showing the data
+# login_required makes sure user auth is successful before showing data
+@login_required
 @app.route('/data')
 # create a function that will return the data from the database
 def index():
