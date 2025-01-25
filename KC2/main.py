@@ -21,18 +21,18 @@ soup = BeautifulSoup(response.content, 'html.parser')
   # print(soup.prettify())
 
 # find all elements with a specific class name (title, price, availability)
-# iterate through each title, price and availability and print each on a new line
+# iterate through each title, price and availability and print each on a new line for testing
 titles = soup.find_all('h3')
-for title in titles:
-  print(title.text, '\n')
+# for title in titles:
+#   print(title.text, '\n')
 
 prices = soup.find_all('p', class_='price_color')
-for price in prices:
-  print(price.text, '\n')
+# for price in prices:
+#   print(price.text, '\n')
 
 availability = soup.find_all('p', class_='instock availability')
-for available in availability:
-  print(available.text, '\n')
+# for available in availability:
+#   print(available.text, '\n')
 
 # create a connection to the database, if it doesn't exist it will be created
 connection = sqlite3.connect('bookstore.db')
@@ -67,8 +67,8 @@ connection.commit()
 cursor.execute('''SELECT * FROM top_books''')
 # fetch data from the table
 result = cursor.fetchall()
-# checks
-print('database data: ', result)
+# checks to see if data was fetched
+# print('database data: ', result)
 
 # close the connection to the database
 connection.close()
