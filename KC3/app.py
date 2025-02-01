@@ -79,6 +79,22 @@ def add_book():
         return redirect(url_for('index'))
     else:
         return render_template('add.html')
+    
+@app.route('/search', methods=['GET','POST'])
+def search():
+    if request.method == 'POST':
+        # opens the database connection
+        connection = db_connection()
+        # form data from the user
+        search = request.form['search']
+        # searches the data from the top_books table with the specified title
+        data = connection.execute('''SELECT * FROM top_books WHERE title LIKE ?''', ('%' + search + '%',)).fetchall()
+        # closes database connection
+        connection.close()
+        # renders the search.html page
+        return render_template('search.html', books=data)
+    else:
+        return render_template('search.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
