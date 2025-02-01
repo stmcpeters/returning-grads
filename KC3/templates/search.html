@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Check 3</title>
+</head>
+<body>
+  <h1>Search Results</h1>
+  <p>Search results for: {{ search }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Availability</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.price }}</td>
+          <td>{{ book.availability }}</td>
+          <td><button type="button"><a href="/edit/{{ book.id }}">Edit</a></button></td>
+          <td><button type="button"><a href="/delete/{{ book.id }}">Delete</a></button></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button type="button"><a href="/">Back to Home</a></button>
+</body>
+</html>
