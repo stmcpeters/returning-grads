@@ -20,9 +20,9 @@ try:
   titles = soup.find_all('h3', class_="css-1j88qqx e15t083i0")
   # for title in titles:
   #   print(title.text)
-  paragraphs = soup.find_all('p', class_="css-1pga48a e15t083i1")
-  # for paragraph in paragraphs:
-  #   print(paragraph.text)
+  descriptions = soup.find_all('p', class_="css-1pga48a e15t083i1")
+  # for description in descriptions:
+  #   print(description.text)
   links = soup.find_all('a', class_="css-8hzhxf")
   # for link in links:
   #   print(link.get('href'))
@@ -40,7 +40,7 @@ try:
   table = '''CREATE TABLE articles (
               ID INTEGER PRIMARY KEY AUTOINCREMENT,
               title TEXT,
-              paragraph TEXT,
+              description TEXT,
               article_link TEXT
               );'''
   # creates table in database
@@ -52,8 +52,8 @@ try:
 
   # iterate through data and insert into articles table
   # zip() inserts all data in one command (best practice for matching data)
-  for title, paragraph, article_link in zip(titles, paragraphs, links):
-    cursor.execute('''INSERT INTO articles (title, paragraph, article_link) VALUES (?, ?, ?)''', (title.text, paragraph.text, article_link.get('href')))
+  for title, description, article_link in zip(titles, descriptions, links):
+    cursor.execute('''INSERT INTO articles (title, description, article_link) VALUES (?, ?, ?)''', (title.text, description.text, article_link.get('href')))
   # commit changes
   connection.commit()
 
