@@ -4,10 +4,25 @@
 {% block content %}
 <h1 class="text-3xl font-serif">Top Tech Articles from the New York Times</h1>
 
-<button class="bg-blue-500 text-white p-5 rounded m-10" type="button"><a href='/add'>Add Article</a></button>
+<div class="grid grid-cols-2 grid-rows-1">
+  <div class="float-right mt-5 p-5 mb-5 bg-yellow-100 border border-yellow-100 rounded">
+    <h2 class="text-2xl font-serif">Tech Joke of the Day</h2>
+    <!-- displays the joke fetched from API and stored in the database -->
+    <!-- if joke is not available, client facing error message will show -->
+    {% if joke %}
+      <p>{{ joke.setup }}</p>
+      <p>{{ joke.punchline }}</p>
+    {% else %}
+      <p>No joke available.</p>
+    {% endif %}
+  </div>
+  <div class="float-right">
+    <button class="bg-blue-500 text-white p-5 rounded ml-70 m-15" type="button"><a href='/add'>Add Article</a></button>
+  </div>
+</div>
 
 <table class="table-auto w-full bg-white border border-gray-300">
-  <thead class="bg-gray-600 text-white">
+  <thead class="text-2xl font-serif bg-gray-600 text-white">
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -19,7 +34,7 @@
       <tr>
         <td class="p-10"><a class="underline" href="https://www.nytimes.com/{{ data.article_link }}">{{ data.title }}</a></td>
         <td class="p-10 cursor-default">{{ data.description }}</td>
-        <td><button type="button" class="p-5 m-10 bg-green-400 text-white border cursor-pointer hover:bg-white-700 rounded"><a href="/edit/{{ data.id }}">Edit</a></button></td>
+        <td><button type="button" class="p-5 m-10 bg-green-800 text-white border cursor-pointer hover:bg-white-700 rounded"><a href="/edit/{{ data.id }}">Edit</a></button></td>
         <td><button type="button" class="p-5 m-10 bg-red-600 text-white cursor-pointer hover:bg-white-700 border rounded"><a href="/delete/{{ data.id }}">Delete</a></button></td>
       </tr>
     {% endfor %}
