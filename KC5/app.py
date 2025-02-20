@@ -12,16 +12,29 @@ def news_db_connection():
     # access the database using a cursor object
     return connection
 
+# create connection to database jokes_api.db
+def jokes_db_connection():
+    # connect to database
+    conn = sqlite3.connect('jokes_api.db')
+    # allows us to access the columns of the database by name like a Python dictionary
+    conn.row_factory = sqlite3.Row
+    # access the database using a cursor object
+    return conn
+
+
 @app.route('/', methods=['GET'])
 def index():
     # opens connection to database
     connection = news_db_connection()
+    conn = jokes_db_connection()
     # fetch data from articles table
     data = connection.execute('''SELECT * FROM articles''').fetchall()
+    joke = conn.execute('''SELECT * FROM tech_jokes LIMIT 1''').fetchone()
     # close database connection
     connection.close()
+    conn.close()
     # render articles data in index.html and pass data in order to display
-    return render_template('index.html', data=data)
+    return render_template('index.html', data=data, joke=joke)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_article():
