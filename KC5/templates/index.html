@@ -11,16 +11,16 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th colspan="2"></th>
+      <th colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
     {% for data in data %}
       <tr>
         <td class="p-10"><a class="underline" href="https://www.nytimes.com/{{ data.article_link }}">{{ data.title }}</a></td>
-        <td class="p-10 cursor-default">{{ data.paragraph }}</td>
-        <td class="p-5 m-10 bg-green-400 text-white border cursor-pointer hover:bg-white-700 rounded"><button type="button">Edit</button></td>
-        <td class="p-5 m-10 bg-red-600 text-white cursor-pointer hover:bg-white-700 border rounded"><button type="button">Delete</button></td>
+        <td class="p-10 cursor-default">{{ data.description }}</td>
+        <td><button type="button" class="p-5 m-10 bg-green-400 text-white border cursor-pointer hover:bg-white-700 rounded"><a href="/edit/{{ data.id }}">Edit</a></button></td>
+        <td><button type="button" class="p-5 m-10 bg-red-600 text-white cursor-pointer hover:bg-white-700 border rounded">Delete</button></td>
       </tr>
     {% endfor %}
   </tbody>
