@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-serif">Top Tech Articles from the New York Times</h1>
+
+<button class="bg-blue-500 text-white p-5 rounded m-10" type="button"><a href='/add'>Add Article</button>
+
+<table class="table-auto w-full bg-white border border-gray-300">
+  <thead class="bg-gray-600 text-white">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in data %}
+      <tr>
+        <td class="p-10"><a class="underline" href="https://www.nytimes.com/{{ data.article_link }}">{{ data.title }}</a></td>
+        <td class="p-10 cursor-default">{{ data.paragraph }}</td>
+        <td class="p-5 m-10 bg-green-400 text-white border cursor-pointer hover:bg-white-700 rounded"><button type="button">Edit</button></td>
+        <td class="p-5 m-10 bg-red-600 text-white cursor-pointer hover:bg-white-700 border rounded"><button type="button">Delete</button></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
