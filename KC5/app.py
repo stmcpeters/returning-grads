@@ -61,25 +61,25 @@ def edit_article(id):
     # open connection to database 
     connection = news_db_connection()
     if request.method == "POST":
-      # form data from user
-      title = request.form['title']
-      description = request.form['description']
-      link = request.form['article_link']
-      # updates data from specified id in the articles table
-      connection.execute('''UPDATE articles SET title = ?, description = ?, article_link = ? WHERE id = ?''', (title, description, link, id))
-      # commit the changes
-      connection.commit()
-      # close database connection
-      connection.close()
-      # redirect to home page
-      return redirect(url_for('index'))
+        # form data from user
+        title = request.form['title']
+        description = request.form['description']
+        link = request.form['article_link']
+        # updates data from specified id in the articles table
+        connection.execute('''UPDATE articles SET title = ?, description = ?, article_link = ? WHERE id = ?''', (title, description, link, id))
+        # commit the changes
+        connection.commit()
+        # close database connection
+        connection.close()
+        # redirect to home page
+        return redirect(url_for('index'))
     else:
-      # will populate the article's info to be edited in the form
-      article = connection.execute('''SELECT * FROM articles WHERE id = ?''', (id,)).fetchone()
-      # close the connection to database
-      connection.close()
-      # will render the edit.html template with article info
-      return render_template('edit.html', article=article)
+        # will populate the article's info to be edited in the form
+        article = connection.execute('''SELECT * FROM articles WHERE id = ?''', (id,)).fetchone()
+        # close the connection to database
+        connection.close()
+        # will render the edit.html template with article info
+        return render_template('edit.html', article=article)
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete_article(id):
