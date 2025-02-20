@@ -4,7 +4,7 @@
 {% block content %}
 <h1 class="text-3xl font-serif">Top Tech Articles from the New York Times</h1>
 
-<button class="bg-blue-500 text-white p-5 rounded m-10" type="button"><a href='/add'>Add Article</button>
+<button class="bg-blue-500 text-white p-5 rounded m-10" type="button"><a href='/add'>Add Article</a></button>
 
 <table class="table-auto w-full bg-white border border-gray-300">
   <thead class="bg-gray-600 text-white">
@@ -20,7 +20,7 @@
         <td class="p-10"><a class="underline" href="https://www.nytimes.com/{{ data.article_link }}">{{ data.title }}</a></td>
         <td class="p-10 cursor-default">{{ data.description }}</td>
         <td><button type="button" class="p-5 m-10 bg-green-400 text-white border cursor-pointer hover:bg-white-700 rounded"><a href="/edit/{{ data.id }}">Edit</a></button></td>
-        <td><button type="button" class="p-5 m-10 bg-red-600 text-white cursor-pointer hover:bg-white-700 border rounded">Delete</button></td>
+        <td><button type="button" class="p-5 m-10 bg-red-600 text-white cursor-pointer hover:bg-white-700 border rounded"><a href="/delete/{{ data.id }}">Delete</a></button></td>
       </tr>
     {% endfor %}
   </tbody>
