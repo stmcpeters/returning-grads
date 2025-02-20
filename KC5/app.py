@@ -68,12 +68,18 @@ def edit_article(id):
       # will render the edit.html template with article info
       return render_template('edit.html', article=article)
 
-
-      
-
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
-def delete_article():
-    pass
+def delete_article(id):
+    # open connection to database
+    connection = news_db_connection()
+    # query to delete specified id from the articles table
+    article = connection.execute('''DELETE FROM articles WHERE id = ?''',(id,))
+    # commit the changes 
+    connection.commit()
+    # close the database connection
+    connection.close()
+    # render deletion template to confirm article was deleted
+    return render_template('delete.html', article=article)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
