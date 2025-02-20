@@ -45,6 +45,8 @@ The app will be available at `http://127.0.0.1:8000/`.
 
 ### Testing
 Unittest coverage report can be generated using `coverage run -m unittest tests/test_app.py`
+<img width="740" alt="Screenshot 2025-02-20 at 8 54 50 AM" src="https://github.com/user-attachments/assets/bc000084-6aa5-4893-a4bf-1542f24950e5" />
+
 
 ### Screenshots of Databases
 <img width="1030" alt="Screenshot 2025-02-19 at 10 53 34 PM" src="https://github.com/user-attachments/assets/f5732a77-2e07-4fb8-b61a-de8d00ad91d1" />
