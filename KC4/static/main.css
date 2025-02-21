@@ -1,0 +1,56 @@
+body {
+  margin-top: 20px;
+}
+
+h1,
+h2,
+th {
+  text-align: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+.fact-link {
+  color: black;
+  text-decoration: underline;
+}
+
+.fact-link:hover {
+  color: blue;
+}
+
+.fact {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 5px black;
+  margin: 10px;
+}
+
+th {
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.form-group label,
+.form-group input,
+.form-group button {
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  margin-bottom: 10px;
+}
