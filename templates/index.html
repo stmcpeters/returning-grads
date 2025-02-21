@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<h1>Welcome to the Bookstore</h1>
+<form action="/search" method="POST">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input type="text" class="form-control" id="search" name="search" placeholder="Enter book title">
+    <button type="submit" id="search"class="btn btn-primary">Search</button>
+  </div>
+</form>
+<div class="fact">
+<h2>Random Fact</h2>
+{% for fact in facts %}
+  <p>{{ fact.fact }}</p>
+  <p>-Source: <a href="{{ fact.source_url }}" class="fact-link">{{ fact.source_name }}</a></p>
+{% endfor %}
+</div>
+<h2>Books</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Availability</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+      <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.availability }}</td>
+        <td><button type="button" class="btn btn-primary"><a href="/add">Add</a></button></td>
+        <td><button type="button" class="btn btn-success"><a href="/edit/{{ book.id }}">Edit</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a href="/delete/{{ book.id }}">Delete</a></button></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

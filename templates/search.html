@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<h1>Search Results</h1>
+<p>Search results for: {{ search }}</p>
+<table class="table table-striped" style="text-align: center;">
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Availability</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+      <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.availability }}</td>
+        <td><button type="button" class="btn btn-success"><a href="/edit/{{ book.id }}">Edit</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a href="/delete/{{ book.id }}">Delete</a></button></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<button type="button" class="btn btn-secondary"><a href="/">Back to Home</a></button>
+{% endblock %}

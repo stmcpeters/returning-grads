@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<h1>Add a Book</h1>
+<form action="/add" method="POST">
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title"><br>
+  <label for="price">Price:</label><br>
+  <input type="text" id="price" name="price"><br>
+  <label for="availability">Availability:</label><br>
+  <input type="text" id="availability" name="availability"><br><br>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+<button type="button" class="btn btn-secondary"><a href="/">Back to Home</a></button>
+{% endblock %}
